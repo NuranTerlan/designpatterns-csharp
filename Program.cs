@@ -9,7 +9,7 @@ namespace DesignPatterns
         {
             var random = new Random();
 
-            // Builder Pattern Usage: START
+            // ********* Builder(Fluent) Pattern Usage: START *********
 
             // creating dummy data for products simulation
             int capacity = 3;
@@ -34,7 +34,21 @@ namespace DesignPatterns
             var productsReport = builder.GetReport();
             Console.WriteLine(productsReport);
 
-            // Builder Pattern Usage: END
+            // ********* Builder(Fluent) Pattern Usage: END *********
+
+            // -------------------------------------------------------------------------
+
+            // ********* Fluent Builder Interface with Recursive Generics Usage: START *********
+
+            var emp = EmployeeBuilderManager.NewEmployee
+                .WithFirstName("Nuran").WithLastName("Tarlan").WithAge(18)
+                .WithEMail("xxxx.xxxxx@helloworld.com")
+                .WithMainPhone("xxx-xxx-xx-xx").WithBackupPhone("xxx-xxx-xx-xx")
+                .AtPosition(Positions.FullStackDeveloper).WithSalary(500).Build();
+
+            Console.WriteLine(emp.ToString());
+
+            // ********* Fluent Builder Interface with Recursive Generics Usage: END *********
         }
     }
 }
