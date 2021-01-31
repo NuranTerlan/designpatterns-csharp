@@ -18,7 +18,7 @@ namespace DesignPatterns
         {
             return $"\n*************\nId: {Id}\n{FirstName} {LastName}, {Age}\n" +
                    $"Email: {Email}\nMain phone number: {PhoneNumMain} | Backup: {PhoneNumBackup}\n" +
-                   $"Position: {Position}\nSalary: ${Salary}\n*************\\n";
+                   $"Position: {Position}\nSalary: ${Salary}\n*************\n";
         }
     }
 }
