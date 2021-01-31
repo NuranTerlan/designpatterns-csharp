@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DesignPatterns.FacetedB;
 
 namespace DesignPatterns
 {
@@ -46,9 +47,24 @@ namespace DesignPatterns
                 .WithMainPhone("xxx-xxx-xx-xx").WithBackupPhone("xxx-xxx-xx-xx")
                 .AtPosition(Positions.FullStackDeveloper).WithSalary(500).Build();
 
-            Console.WriteLine(emp.ToString());
+            Console.WriteLine(emp);
 
             // ********* Fluent Builder Interface with Recursive Generics Usage: END *********
+
+            // -------------------------------------------------------------------------
+
+            // ********* Faceted Builder Usage: START
+
+            var car = new CarBuilderFacade()
+                .Info.WithBrand(CarBrands.Subaru).WithModel("Impreza").CreatedAt(2003).WithDistance(186522.5)
+                .Engine.WithEngine(1800).WithHorsePower(422).WithTorque(600)
+                .Trade.WithPrice(18000.0m).IsSecondHand(true)
+                .Address.InCity("Baku").InDealer("Subaru XXXXX-XX")
+                .Build();
+
+            Console.WriteLine(car);
+
+            // ********* Faceted Builder Usage: END
         }
     }
 }
