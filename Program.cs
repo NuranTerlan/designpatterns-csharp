@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DesignPatterns.FacetedB;
+using DesignPatterns.FactoryMethod;
 
 namespace DesignPatterns
 {
@@ -65,6 +66,16 @@ namespace DesignPatterns
             Console.WriteLine(car);
 
             // ********* Faceted Builder Usage: END
+
+            // -------------------------------------------------------------------------
+
+            // ********* Factory Method Usage: START
+
+            AirConditioner.InitializeFactories()
+                .ExecuteCreation(Actions.Cooling, 20.2)
+                .Operate();
+
+            // ********* Factory Method Usage: END
         }
     }
 }
