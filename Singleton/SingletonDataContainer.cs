@@ -25,13 +25,13 @@ namespace DesignPatterns.Singleton
             return _capitals[name];
         }
 
-        private static readonly Lazy<SingletonDataContainer> _instance;
+        private static readonly Lazy<SingletonDataContainer> Instance;
 
         static SingletonDataContainer()
         {
-            _instance = new Lazy<SingletonDataContainer>();
+            Instance = new Lazy<SingletonDataContainer>();
         }
 
-        public static SingletonDataContainer Instance => _instance.Value;
+        public static SingletonDataContainer GetInstance => Instance.Value;
     }
 }
