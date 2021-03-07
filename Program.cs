@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DesignPatterns.FacetedB;
 using DesignPatterns.FactoryMethod;
+using DesignPatterns.Singleton;
 
 namespace DesignPatterns
 {
@@ -76,6 +77,18 @@ namespace DesignPatterns
                 .Operate();
 
             // ********* Factory Method Usage: END
+
+            // -------------------------------------------------------------------------
+
+            // ********* Singleton Usage: START
+
+            var db1 = SingletonDataContainer.GetInstance;
+            Console.WriteLine(db1.GetPopulation("Sumqayit"));
+
+            var db2 = SingletonDataContainer.GetInstance;
+            Console.WriteLine(db2.GetPopulation("Baku"));
+
+            // ********* Singleton Usage: END
         }
     }
 }
