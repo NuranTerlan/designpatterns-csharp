@@ -79,14 +79,15 @@ namespace DesignPatterns
             // ********* Factory Method Usage: END
 
             // -------------------------------------------------------------------------
+            Console.WriteLine("\n-------------------------------\n");
 
             // ********* Singleton Usage: START
 
             var db1 = SingletonDataContainer.GetInstance;
-            Console.WriteLine(db1.GetPopulation("Sumqayit"));
+            Console.WriteLine($"Population of Sumqayit: {db1.GetPopulation("Sumqayit")}");
 
             var db2 = SingletonDataContainer.GetInstance;
-            Console.WriteLine(db2.GetPopulation("Baku"));
+            Console.WriteLine($"Baku: {db2.GetPopulation("Baku")} people");
 
             // ********* Singleton Usage: END
         }
