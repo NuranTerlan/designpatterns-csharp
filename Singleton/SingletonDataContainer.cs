@@ -13,7 +13,7 @@ namespace DesignPatterns.Singleton
             Console.WriteLine("Initializing singleton object");
             _capitals = new Dictionary<string, int>();
 
-            var elements = File.ReadAllLines("cities.txt");
+            var elements = File.ReadAllLines(@"F:\C#PERSONAL\DesignPatterns\Singleton/cities.txt");
             for (int i = 0; i < elements.Length; i += 2)
             {
                 _capitals.Add(elements[i], int.Parse(elements[i + 1]));
@@ -29,7 +29,8 @@ namespace DesignPatterns.Singleton
 
         static SingletonDataContainer()
         {
-            Instance = new Lazy<SingletonDataContainer>();
+            Instance =
+                new Lazy<SingletonDataContainer>(() => new SingletonDataContainer());
         }
 
         public static SingletonDataContainer GetInstance => Instance.Value;
