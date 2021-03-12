@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DesignPatterns.Adapter;
 using DesignPatterns.FacetedB;
 using DesignPatterns.FactoryMethod;
 using DesignPatterns.Singleton;
@@ -41,7 +42,7 @@ namespace DesignPatterns
 
             // -------------------------------------------------------------------------
 
-            // ********* Fluent Builder Interface with Recursive Generics Usage: START *********
+            // ********* Fluent Builder Interface with Recursive Generics Pattern Usage: START *********
 
             var emp = EmployeeBuilderManager.NewEmployee
                 .WithFirstName("Nuran").WithLastName("Tarlan").WithAge(18)
@@ -51,11 +52,11 @@ namespace DesignPatterns
 
             Console.WriteLine(emp);
 
-            // ********* Fluent Builder Interface with Recursive Generics Usage: END *********
+            // ********* Fluent Builder Interface with Recursive Generics Pattern Usage: END *********
 
             // -------------------------------------------------------------------------
 
-            // ********* Faceted Builder Usage: START
+            // ********* Faceted Builder Pattern Usage: START
 
             var car = new CarBuilderFacade()
                 .Info.WithBrand(CarBrands.Subaru).WithModel("Impreza").CreatedAt(2003).WithDistance(186522.5)
@@ -66,22 +67,22 @@ namespace DesignPatterns
 
             Console.WriteLine(car);
 
-            // ********* Faceted Builder Usage: END
+            // ********* Faceted Builder Pattern Usage: END
 
             // -------------------------------------------------------------------------
 
-            // ********* Factory Method Usage: START
+            // ********* Factory Method Pattern Usage: START
 
             AirConditioner.InitializeFactories()
                 .ExecuteCreation(Actions.Cooling, 20.2)
                 .Operate();
 
-            // ********* Factory Method Usage: END
+            // ********* Factory Method Pattern Usage: END
 
             // -------------------------------------------------------------------------
             Console.WriteLine("\n-------------------------------\n");
 
-            // ********* Singleton Usage: START
+            // ********* Singleton Pattern Usage: START
 
             var db1 = SingletonDataContainer.GetInstance;
             Console.WriteLine($"Population of Sumqayit: {db1.GetPopulation("Sumqayit")}");
@@ -89,7 +90,18 @@ namespace DesignPatterns
             var db2 = SingletonDataContainer.GetInstance;
             Console.WriteLine($"Baku: {db2.GetPopulation("Baku")} people");
 
-            // ********* Singleton Usage: END
+            // ********* Singleton Pattern Usage: END
+
+            // -------------------------------------------------------------------------
+            Console.WriteLine("\n-------------------------------\n");
+
+            // ********* Adapter Pattern Usage: START
+
+            var xmlConverter = new CustomXmlConverter();
+            var adapter = new XmlToJsonAdapter(xmlConverter);
+            adapter.ConvertXmlToJson();
+
+            // ********* Adapter Pattern Usage: END
         }
     }
 }
