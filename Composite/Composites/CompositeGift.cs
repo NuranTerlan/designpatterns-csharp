@@ -7,11 +7,11 @@ namespace DesignPatterns.Composite.Composites
     public class CompositeGift : GiftBase, IGiftOperations
     {
         private readonly IList<GiftBase> _gifts;
-        private bool isRoot;
+        private readonly bool _isRoot;
 
         public CompositeGift(string name, bool isRoot, int price = 0) : base(name, price)
         {
-            this.isRoot = isRoot;
+            this._isRoot = isRoot;
             _gifts = new List<GiftBase>();
         }
 
@@ -19,22 +19,18 @@ namespace DesignPatterns.Composite.Composites
         {
             int total = 0;
 
-            if (isRoot)
-            {
-                Console.WriteLine($"Root Gift => {this.name} contains the following products with prices: ");
-            }
-            else
-            {
-                Console.WriteLine($"Inner Gift {this.name} contains the following products with prices: ");
-            }
+            Console.WriteLine(_isRoot
+                ? $"Root Gift => {this.name} contains the following products with prices: "
+                : $"Inner Gift {this.name} contains the following products with prices: ");
 
             foreach (var gift in _gifts)
             {
                 total += gift.CalculateTotalPrice();
             }
 
-            if (isRoot)
+            if (_isRoot)
             {
+                Console.WriteLine($"Total: {total}");
                 Console.WriteLine("--------------");
             }
 
