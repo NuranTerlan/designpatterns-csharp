@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using DesignPatterns.Adapter;
+using DesignPatterns.Composite.Composites;
+using DesignPatterns.Composite.Leaves;
 using DesignPatterns.FacetedB;
 using DesignPatterns.FactoryMethod;
 using DesignPatterns.Singleton;
@@ -102,6 +104,32 @@ namespace DesignPatterns
             adapter.ConvertXmlToJson();
 
             // ********* Adapter Pattern Usage: END
+
+            // -------------------------------------------------------------------------
+            Console.WriteLine("\n-------------------------------\n");
+
+            // ********* Composite Pattern Usage: START
+
+            // single gift
+            var phone = new SingleGift("Phone", 500);
+            phone.CalculateTotalPrice();
+            Console.WriteLine();
+
+            // composite many gifts together
+            var rootBox = new CompositeGift("Surprise Box for Teenagers");
+            var truckToy = new SingleGift("Truck Toy", 220);
+            var plainToy = new SingleGift("Plain Toy", 89);
+            rootBox.Add(truckToy);
+            rootBox.Add(plainToy);
+
+            var childBox = new CompositeGift("Surprise Box for Children");
+            var soldierToy = new SingleGift("Soldier Toy", 15);
+            childBox.Add(soldierToy);
+            rootBox.Add(childBox);
+
+            rootBox.CalculateTotalPrice();
+
+            // ********* Composite Pattern Usage: END
         }
     }
 }
