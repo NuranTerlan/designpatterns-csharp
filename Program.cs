@@ -116,13 +116,13 @@ namespace DesignPatterns
             Console.WriteLine();
 
             // composite many gifts together
-            var rootBox = new CompositeGift("Surprise Box for Teenagers");
+            var rootBox = new CompositeGift("Surprise Box for Teenagers", true);
             var truckToy = new SingleGift("Truck Toy", 220);
             var plainToy = new SingleGift("Plain Toy", 89);
             rootBox.Add(truckToy);
             rootBox.Add(plainToy);
 
-            var childBox = new CompositeGift("Surprise Box for Children");
+            var childBox = new CompositeGift("Surprise Box for Children", false);
             var soldierToy = new SingleGift("Soldier Toy", 15);
             childBox.Add(soldierToy);
             rootBox.Add(childBox);
