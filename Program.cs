@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DesignPatterns.Adapter;
 using DesignPatterns.Composite.Composites;
 using DesignPatterns.Composite.Leaves;
+using DesignPatterns.Decorator;
 using DesignPatterns.FacetedB;
 using DesignPatterns.FactoryMethod;
 using DesignPatterns.Singleton;
@@ -130,6 +131,22 @@ namespace DesignPatterns
             rootBox.CalculateTotalPrice();
 
             // ********* Composite Pattern Usage: END
+
+            // -------------------------------------------------------------------------
+            Console.WriteLine("\n-------------------------------\n");
+
+            // ********* Decorator Pattern Usage: START
+
+            var regularOrder = new RegularOrder();
+            Console.WriteLine(regularOrder.CalculateTotalOrderPrice() + "\n");
+
+            var preOrder = new PreOrder();
+            Console.WriteLine(preOrder.CalculateTotalOrderPrice() + "\n");
+
+            var premiumPreOrder = new PremiumPreOrder(preOrder);
+            Console.WriteLine(premiumPreOrder.CalculateTotalOrderPrice());
+
+            // ********* Decorator Pattern Usage: END
         }
     }
 }
