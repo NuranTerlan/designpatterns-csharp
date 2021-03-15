@@ -158,22 +158,15 @@ namespace DesignPatterns
 
             var modifyPrice = new ModifyPrice();
             var product = new Product2("Phone", 500);
-            Execute(modifyPrice, new ProductCommand(product, PriceAction.Increase, 100));
+            modifyPrice.Execute(new ProductCommand(product, PriceAction.Increase, 100));
+            modifyPrice.Execute(new ProductCommand(product, PriceAction.Decrease, 700));
+            modifyPrice.Execute(new ProductCommand(product, PriceAction.Decrease, 20));
 
-            Execute(modifyPrice, new ProductCommand(product, PriceAction.Increase, 50));
-            Execute(modifyPrice, new ProductCommand(product, PriceAction.Decrease, 25));
-
-            Console.WriteLine(product + "\n");
+            Console.WriteLine(product);
             modifyPrice.UndoActions();
             Console.WriteLine(product);
 
             // ********* Command Pattern Usage: END
-        }
-
-        private static void Execute(ModifyPrice modifyPrice, ProductCommand productCommand)
-        {
-            modifyPrice.SetCommand(productCommand);
-            modifyPrice.Invoke();
         }
     }
 }
