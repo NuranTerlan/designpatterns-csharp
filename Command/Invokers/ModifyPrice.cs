@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace DesignPatterns.Command.Invokers
 {
@@ -18,6 +19,14 @@ namespace DesignPatterns.Command.Invokers
         {
             _commands.Add(_command);
             _command.ExecuteAction();
+        }
+
+        public void UndoActions()
+        {
+            foreach (var productCommand in _commands.Reverse())
+            {
+                productCommand.UndoAction();
+            }
         }
     }
 }
