@@ -19,15 +19,19 @@ namespace DesignPatterns.Command.Receivers
             Console.WriteLine($"The price for the {Name} has been increased by ${amount}");
         }
 
-        public void DecreasePrice(int amount)
+        public bool DecreasePrice(int amount)
         {
-            if (amount < Price)
+            if (amount >= Price)
             {
-                Price -= amount;
-                Console.WriteLine($"The price for the {Name} has been decreased by ${amount}");
+                Console.WriteLine($"ERROR: Product price can't be negative | decreasing amount => ${amount}");
+                return false;
             }
+            Price -= amount;
+            Console.WriteLine($"The price for the {Name} has been decreased by ${amount}");
+            return true;
+
         }
 
-        public override string ToString() => $"Current price for the {Name} product is ${Price}";
+        public override string ToString() => $"\nCurrent price for the {Name} product is ${Price}\n";
     }
 }
