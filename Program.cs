@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using DesignPatterns.Adapter;
+using DesignPatterns.Command;
+using DesignPatterns.Command.Invokers;
+using DesignPatterns.Command.Receivers;
 using DesignPatterns.Composite.Composites;
 using DesignPatterns.Composite.Leaves;
 using DesignPatterns.Decorator;
@@ -147,6 +150,27 @@ namespace DesignPatterns
             Console.WriteLine(premiumPreOrder.CalculateTotalOrderPrice());
 
             // ********* Decorator Pattern Usage: END
+
+            // -------------------------------------------------------------------------
+            Console.WriteLine("\n-------------------------------\n");
+
+            // ********* Command Pattern Usage: START
+
+            var modifyPrice = new ModifyPrice();
+            var product = new Product2("Phone", 500);
+            Execute(modifyPrice, new ProductCommand(product, PriceAction.Increase, 100));
+
+            Execute(modifyPrice, new ProductCommand(product, PriceAction.Increase, 50));
+            Execute(modifyPrice, new ProductCommand(product, PriceAction.Decrease, 25));
+            Console.WriteLine(product);
+
+            // ********* Command Pattern Usage: END
+        }
+
+        private static void Execute(ModifyPrice modifyPrice, ProductCommand productCommand)
+        {
+            modifyPrice.SetCommand(productCommand);
+            modifyPrice.Invoke();
         }
     }
 }
