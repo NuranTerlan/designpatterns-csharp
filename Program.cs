@@ -162,6 +162,9 @@ namespace DesignPatterns
 
             Execute(modifyPrice, new ProductCommand(product, PriceAction.Increase, 50));
             Execute(modifyPrice, new ProductCommand(product, PriceAction.Decrease, 25));
+
+            Console.WriteLine(product + "\n");
+            modifyPrice.UndoActions();
             Console.WriteLine(product);
 
             // ********* Command Pattern Usage: END
