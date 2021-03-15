@@ -1,4 +1,5 @@
-﻿using DesignPatterns.Command.Receivers;
+﻿using System;
+using DesignPatterns.Command.Receivers;
 
 namespace DesignPatterns.Command
 {
@@ -25,6 +26,19 @@ namespace DesignPatterns.Command
             }
 
             _product.DecreasePrice(_amount);
+        }
+
+        public void UndoAction()
+        {
+            Console.Write("Undo => ");
+
+            if (_priceAction == PriceAction.Increase)
+            {
+                _product.DecreasePrice(_amount);
+                return;
+            }
+
+            _product.IncreasePrice(_amount);
         }
     }
 }
