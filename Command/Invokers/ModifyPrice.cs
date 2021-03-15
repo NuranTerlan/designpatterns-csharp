@@ -21,6 +21,12 @@ namespace DesignPatterns.Command.Invokers
             _command.ExecuteAction();
         }
 
+        public void Execute(ProductCommand productCommand)
+        {
+            SetCommand(productCommand);
+            Invoke();
+        }
+
         public void UndoActions()
         {
             foreach (var productCommand in _commands.Reverse())
