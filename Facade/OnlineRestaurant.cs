@@ -19,6 +19,7 @@ namespace DesignPatterns.Facade
 
         public void AddOrderToCart(Order order)
         {
+            Console.WriteLine($"{order.DishName} is added to the Cart (${order.DishPrice})");
             _cart.Add(order);
         }
 
