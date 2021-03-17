@@ -9,6 +9,12 @@ namespace DesignPatterns.Facade
         private readonly OnlineRestaurant _restaurant;
         private readonly ShippingService _shippingService;
 
+        public Facade()
+        {
+            _restaurant = new OnlineRestaurant();
+            _shippingService = new ShippingService();
+        }
+
         public Facade(OnlineRestaurant restaurant, ShippingService shippingService)
         {
             _restaurant = restaurant;
