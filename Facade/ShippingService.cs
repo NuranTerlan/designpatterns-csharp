@@ -9,12 +9,10 @@ namespace DesignPatterns.Facade
         public void AcceptOrder(Order order)
         {
             _order = order;
+            CalculateShippingExpenses();
         }
 
-        public void CalculateShippingExpenses()
-        {
-            _order.ShippingPrice = 15.5;
-        }
+        private void CalculateShippingExpenses() => _order.ShippingPrice = 15.5;
 
         public void ShipOrder()
         {
