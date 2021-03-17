@@ -8,7 +8,7 @@
         public string ShippingAddress { get; set; }
         public double ShippingPrice { get; set; }
 
-        private double FullPrice => DishPrice + ShippingPrice;
+        public double FullPrice => DishPrice + ShippingPrice;
 
         public override string ToString()
         {
