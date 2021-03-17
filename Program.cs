@@ -7,6 +7,7 @@ using DesignPatterns.Command.Receivers;
 using DesignPatterns.Composite.Composites;
 using DesignPatterns.Composite.Leaves;
 using DesignPatterns.Decorator;
+using DesignPatterns.Facade;
 using DesignPatterns.FacetedB;
 using DesignPatterns.FactoryMethod;
 using DesignPatterns.Singleton;
@@ -190,6 +191,27 @@ namespace DesignPatterns
             Console.WriteLine($"Total cost for all the salaries is: {juniorTotal + seniorTotal}");
 
             // ********* Strategy Pattern Usage: END
+
+            // -------------------------------------------------------------------------
+            Console.WriteLine("\n-------------------------------\n");
+
+            // ********* Facade Pattern Usage: START
+
+            var restaurant = new OnlineRestaurant();
+            var shippingService = new ShippingService();
+            var chickenOrder = new Order() { DishName = "Chicken with rice", DishPrice = 20.0, User = "User1", ShippingAddress = "Random street 123" };
+            var sushiOrder = new Order() { DishName = "Sushi", DishPrice = 52.0, User = "User2", ShippingAddress = "More random street 321" };
+            restaurant.AddOrderToCart(chickenOrder);
+            restaurant.AddOrderToCart(sushiOrder);
+            restaurant.CompleteOrders();
+            shippingService.AcceptOrder(chickenOrder);
+            shippingService.CalculateShippingExpenses();
+            shippingService.ShipOrder();
+            shippingService.AcceptOrder(sushiOrder);
+            shippingService.CalculateShippingExpenses();
+            shippingService.ShipOrder();
+
+            // ********* Facade Pattern Usage: END
         }
     }
 }
