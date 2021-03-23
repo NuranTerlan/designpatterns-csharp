@@ -10,6 +10,7 @@ using DesignPatterns.Decorator;
 using DesignPatterns.Facade;
 using DesignPatterns.FacetedB;
 using DesignPatterns.FactoryMethod;
+using DesignPatterns.Prototype;
 using DesignPatterns.Singleton;
 using DesignPatterns.Strategy;
 
@@ -205,6 +206,39 @@ namespace DesignPatterns
             facade.OrderFood(new List<Order> {chickenOrder, sushiOrder});
 
             // ********* Facade Pattern Usage: END
+
+            // -------------------------------------------------------------------------
+            Console.WriteLine("\n-------------------------------\n");
+
+            // ********* Prototype Pattern Usage: START
+
+            var grid = new List<IBlock>();
+            grid.AddRange(new List<IBlock>
+            {
+                BlockFactory.Create("Hello, world!"),
+                BlockFactory.Create("3"),
+                BlockFactory.Create("16/05/2002"), // datetime
+                BlockFactory.Create("08/22/2021") // string, because 12 month exist in calendar
+            });
+
+            foreach (var block in grid)
+            {
+                Console.WriteLine(block);
+            }
+
+            var block5 = (DateTimeBlock) grid[2].Clone();
+            block5.Format = "MM/dd/yyyy";
+            grid.Add(block5);
+            Console.WriteLine("\nblock5 is added...");
+            Console.WriteLine(block5);
+
+            var block6 = (DateTimeBlock) grid[4].Clone();
+            block6.DateTime = DateTime.UtcNow;
+            grid.Add(block6);
+            Console.WriteLine("\nblock6 is added...");
+            Console.WriteLine(block6);
+
+            // ********* Prototype Pattern Usage: END
         }
     }
 }
