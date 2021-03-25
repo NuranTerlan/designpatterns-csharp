@@ -11,6 +11,7 @@ using DesignPatterns.Facade;
 using DesignPatterns.FacetedB;
 using DesignPatterns.FactoryMethod;
 using DesignPatterns.Prototype;
+using DesignPatterns.Proxy;
 using DesignPatterns.Singleton;
 using DesignPatterns.Strategy;
 
@@ -239,6 +240,20 @@ namespace DesignPatterns
             Console.WriteLine(block6);
 
             // ********* Prototype Pattern Usage: END
+
+            // -------------------------------------------------------------------------
+            Console.WriteLine("\n-------------------------------\n");
+
+            // ********* Protection-Proxy Pattern Usage: START
+
+            var settings = new Settings("settings config");
+            Console.WriteLine(settings.GetConfig());
+
+            var authService = new AuthService();
+            var protectedSettings = new ProtectedSettings(authService);
+            Console.WriteLine(protectedSettings.GetConfig());
+
+            // ********* Protection-Proxy Pattern Usage: END
         }
     }
 }
