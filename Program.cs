@@ -10,6 +10,7 @@ using DesignPatterns.Decorator;
 using DesignPatterns.Facade;
 using DesignPatterns.FacetedB;
 using DesignPatterns.FactoryMethod;
+using DesignPatterns.Iterator;
 using DesignPatterns.Prototype;
 using DesignPatterns.Proxy;
 using DesignPatterns.Singleton;
@@ -254,6 +255,25 @@ namespace DesignPatterns
             Console.WriteLine(protectedSettings.GetConfig());
 
             // ********* Protection-Proxy Pattern Usage: END
+
+            // ********* Iterator Pattern Usage: START
+
+            var numbers = new CustomLinkedList<int>(1);
+            for (int i = 2; i < 8; i++)
+            {
+                numbers.Add(i);
+            }
+
+            var iterator = numbers.Iterator;
+            while (!iterator.Complete)
+            {
+                Console.WriteLine(iterator.Next());
+            }
+
+            // Exception will be thrown
+            // Console.WriteLine(iterator.Next());
+
+            // ********* Iterator Pattern Usage: END
         }
     }
 }
